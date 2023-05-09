@@ -1,0 +1,91 @@
+﻿@using app_calories.Models
+@model IEnumerable<CaloriesDTO>;
+@*<div class="row align-items-center vh-100">
+    <div class="col-6 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    @using (Html.BeginForm())
+                    {
+                        <form class="d-flex">
+                            @Html.TextBoxFor(m => m.id, new { htmlAttributes = new { @class = "span4 m-wrap form-control", @id = "userInput" } })
+                            <input type="submit" value="search" id="btnSubmit" />
+                        </form>
+                    }
+                </div>
+                <div class="row">
+                    @foreach (var x in Model)
+                    {
+                        <div class="col-sm-3">@x.name</div>
+                        <div class="col-sm-3">@x.calories_per_hour</div>
+                        <div class="col-sm-3">@x.duration_minutes</div>
+                        <div class="col-sm-3">@x.total_calories</div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+<main role="main">
+    <div class="row align-content-center vh-100">
+        <div class="background-section">
+            <div class="col-lg-10">
+                <h1 class="text-primary font-weight-bold"><b>Calories Burn Calculator</b></h1>
+                <form action="/Home/Index" method="get" class="mt-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="query" placeholder="Enter your search query" value="@ViewBag.Query" required>
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+                <p class="text-white text-left">Powered By API : https://api-ninjas.com/api/caloriesburned</p>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="row">
+                @if (Model != null && Model.Count() != 0)
+                {
+                    <table class="table table-striped table-hover m-3">
+                        <thead class="table-dark align-items-center">
+                            <tr>
+                                <th>
+                                    ACTION
+                                </th>
+                                <th>
+                                    CALORIES PER HR
+                                </th>
+                                <th>
+                                    DURATION MINUTES
+                                </th>
+                                <th>
+                                    TOTAL CALORIES
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="align-items-center">
+                            @foreach (var x in Model)
+                            {
+                                <tr>
+                                    <td class="text-left">
+                                        @x.name
+                                    </td>
+                                    <td>
+                                        @x.calories_per_hour
+                                    </td>
+                                    <td>
+                                        @x.duration_minutes
+                                    </td>
+                                    <td>
+                                        @x.total_calories
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                <p class="text-muted">@ViewBag.Result</p>
+            </div>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,17 @@
+﻿/*body.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+*/
+.centered-search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.search-bar {
+    max-width: 400px;
+    width: 100%;
+    padding: 10px;
+}
